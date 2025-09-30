@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { supabase } from "../lib/supabase";
 
+import TicketDetailsScreen from "../screens/TicketDetailsScreen";
 import LoginScreen from "../screens/LoginScreen";
 import FeedScreen from "../screens/FeedScreen"; // usado na MainTabs
 import GoScreen from "../screens/GoScreen";
@@ -36,14 +37,15 @@ export default function RootStack() {
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {session ? (
-        <>
-          <Stack.Screen name="MainTabs" component={MainTabs} />
-          <Stack.Screen name="EventDetails" component={EventDetailsScreen} />
-        </>
-      ) : (
-        <Stack.Screen name="Login" component={LoginScreen} />
-      )}
-    </Stack.Navigator>
+  {session ? (
+    <>
+      <Stack.Screen name="MainTabs" component={MainTabs} />
+      <Stack.Screen name="EventDetails" component={EventDetailsScreen} />
+      <Stack.Screen name="TicketDetails" component={TicketDetailsScreen} /> 
+    </>
+  ) : (
+    <Stack.Screen name="Login" component={LoginScreen} />
+  )}
+</Stack.Navigator>
   );
 }
